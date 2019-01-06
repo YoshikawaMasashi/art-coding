@@ -3,8 +3,8 @@
 ```python3
 import FoxDot
 
-p1 = FoxDot.lib.Players.Player()
-pluck = FoxDot.lib.SCLang.SynthDef('pluck')
+p1 = FoxDot.Player()
+pluck = FoxDot.SynthDef('pluck')
 
 p1 >> pluck()
 p1.stop()
