@@ -3,7 +3,7 @@
 ```python3
 import FoxDot
 
-p1 = FoxDot.Player()
+p1 = FoxDot.p1
 pluck = FoxDot.pluck
 
 p1 >> pluck()
