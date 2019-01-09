@@ -33,13 +33,14 @@ guitar_dur = \
 print(fd.SynthDefs)
 
 fd.p1 >> fd.SynthDef('saw')(sabi_notes, dur=sabi_dur, amp=0.75, fmod=0.5,
-                            vib=6, vibdepth=0.01)
+                            vib=6, vibdepth=0.01).spread()
 fd.p2 >> fd.SynthDef('bass')(
     bass_notes, dur=bass_dur, amp=0.4, pshift=-12)
 fd.p3 >> fd.SynthDef('nylon')(
     guitar_notes, dur=guitar_dur, amp=0.2, pshift=-12)
 fd.d1 >> fd.play(
     "<x x x (x[xx])( [xxxx])><------(-#)(- )><  o[-o][ o] (o )(  )>", amp=0.5)
+
 
 fd.p1.stop()
 fd.p2.stop()
