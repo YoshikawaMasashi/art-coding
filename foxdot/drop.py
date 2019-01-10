@@ -12,7 +12,10 @@ print(fd.SynthDefs)
 
 fd.m1 >> fd.SynthDef('nylon')(
     main_melody_notes, dur=main_melody_dur, amp=0.2, echo=1.0, delay=(0, 1.0))
-fd.m2 >> fd.SynthDef('soft')((-3, 0), dur=8, amp=0.5)
+fd.m2 >> fd.SynthDef('saw')((-3, 0), dur=8, amp=0.5, lpf=2000)
+
+fd.d1 >> fd.play("<- - - - - - - - ><x  xo  x xx o   >", sample=3)
 
 fd.m1.stop()
 fd.m2.stop()
+fd.d1.stop()
