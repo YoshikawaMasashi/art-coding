@@ -27,6 +27,7 @@ fd.s2 >> fd.creep([(-4, -2, 0), (-5, -3, 0)], dur=[8, 8], amp=0.3)
 fd.d1 >> fd.play("<x o  xx xx o xx >", amp=0.5, sample=4)
 fd.d2 >> fd.play("=-=-=-=-", amp=0.3, sample=2)
 
+fd.r1.stop()
 fd.b1.stop()
 fd.s1.stop()
 fd.s2.stop()
