@@ -6,10 +6,17 @@ fd.Root.default.set("C")
 fd.SynthDefs
 
 
-fd.r1 >> fd.fuzz(
+fd.r1 >> fd.dirt(
     [0, 3, 1.5, 3, 4, 1.5, 0, 0, 0, 1.5, 0, -1.5, 1.5, 0, 0],
     dur=[fd.rest(1), 0.5, 0.5, 1, 0.5, 0.5, fd.rest(0.5), 3.5, fd.rest(2), 0.5, 0.5, 0.5, 0.5, fd.rest(0.5), 3.5],
-    oct=5
+    oct=7,
+    amp=0.7
+)
+fd.r2 >> fd.fuzz(
+    [0, 3, 1.5, 3, 4, 1.5, 0, 0, 0, 1.5, 0, -1.5, 1.5, 0, 0],
+    dur=[fd.rest(1), 0.5, 0.5, 1, 0.5, 0.5, fd.rest(0.5), 3.5, fd.rest(2), 0.5, 0.5, 0.5, 0.5, fd.rest(0.5), 3.5],
+    oct=5,
+    amp=1.0
 )
 
 fd.b1 >> fd.sawbass(
@@ -28,6 +35,7 @@ fd.d1 >> fd.play("<x o  xx xx o xx >", amp=0.5, sample=4)
 fd.d2 >> fd.play("=-=-=-=-", amp=0.3, sample=2)
 
 fd.r1.stop()
+fd.r2.stop()
 fd.b1.stop()
 fd.s1.stop()
 fd.s2.stop()
