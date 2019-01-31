@@ -42,7 +42,14 @@ fd.d1 >> fd.play(
     "<x x x (x[xx])( [xxxx])><------(-#)(- )><  o[-o][ o] (o )(  )>", amp=0.5)
 
 
+fd.p4 >> fd.SynthDef('saw')([0, 0, 1, 0, 0, 0], dur=[0.5, fd.rest(0.5), 0.5, fd.rest(0.5), 0.5, fd.rest(1.5)], amp=0.5, oct=8)
+fd.p5 >> fd.SynthDef('bell')([0, 0, 0, 0, 0, 0], dur=[0.5, 0.25, 0.25, 0.25, 0.25, 0.5], amp=0.3, oct=5)
+fd.d2 >> fd.play("xx o o o", amp=0.2, sample=4)
+
 fd.p1.stop()
 fd.p2.stop()
 fd.p3.stop()
+fd.p4.stop()
+fd.p5.stop()
 fd.d1.stop()
+fd.d2.stop()
