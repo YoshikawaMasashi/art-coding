@@ -1,9 +1,9 @@
 void fibinacci_branch(float start_x, float start_y, float direction_x, float direction_y, float width, boolean is_big) {
     float div_length;
     if (is_big) {
-        div_length = 7;
+        div_length = int(5 + random(4));
     } else {
-        div_length = 14;
+        div_length = int(10 + random(8));
     }
 
     for(int i = 0; i < div_length; i++){
