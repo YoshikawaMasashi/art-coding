@@ -11,12 +11,12 @@ float z_noise_seed2 = random(10);
 void setup() {
   frameRate(60);
 
-  size(700, 700, OPENGL);
+  size(600, 600, OPENGL);
   background(239);
 }
 
 void draw() {
-  background(239);
+  background(239, 239, 255);
 
   for (int x = -200; x <= 200; x += 10) {
     for (int y = -200; y <= 200; y += 10) {
@@ -35,10 +35,12 @@ void draw() {
 
             if (noise > 0.6){
                 pushMatrix();
-                translate(x + 350, y + 350, z);
+                translate(x + 300, y + 300, z + 100);
 
-                fill(255 * color_noise, 100);
-                noStroke();
+                // fill(255 * color_noise, 100);
+                // noStroke();
+                noFill();
+                stroke(140 + 100 * color_noise, 155 + 100 * color_noise, 140 + 100 * color_noise);
                 box(9);
                 // sphere(9);
                 
