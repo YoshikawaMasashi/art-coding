@@ -1,4 +1,4 @@
-void fibinacci_branch(float start_x, float start_y, float direction_x, float direction_y, float width, boolean is_big) {
+void fibinacci_branch(float start_x, float start_y, float direction, float width, boolean is_big) {
     float div_length;
     if (is_big) {
         div_length = int(5 + random(4));
@@ -6,11 +6,20 @@ void fibinacci_branch(float start_x, float start_y, float direction_x, float dir
         div_length = int(10 + random(8));
     }
 
+    float direction_x = sin(radians(direction));
+    float direction_y = -cos(radians(direction));
     for(int i = 0; i < div_length; i++){
+        colorMode(HSB, 1);
+        noStroke();
+        fill(color((random(0.2) - 0.1) % 1.0, 0.3, 0.3), 0.7);
         ellipse(start_x + 10 * i * direction_x, start_y + 10 * i * direction_y, width, width);
+
+        noStroke();
+        for(int j = 0; j < 50 - width; j++){
+            fill(color(random(0.3) + 0.2, random(0.1) + 0.5, random(0.2) + 0.5), 0.3);
+            ellipse(start_x + 10 * i * direction_x + random(50) - 25, start_y + 10 * i * direction_y+ random(50) - 25, 5, 5);
+        }
     }
-    // noFill();
-    stroke(0);
 
     float length;
     if (width > 10) {
@@ -24,22 +33,11 @@ void fibinacci_branch(float start_x, float start_y, float direction_x, float dir
             divide_mode = -1;
         }
 
-        float big_direction_x = direction_x + divide_mode * 0.5;
-        float big_direction_y = direction_y;
-        length = sqrt(big_direction_x * big_direction_x + big_direction_y * big_direction_y);
-        big_direction_x /= length;
-        big_direction_y /= length;
+        float big_direction = direction + divide_mode * 17;
+        fibinacci_branch(start_x + 10 * div_length * direction_x, start_y + 10 * div_length * direction_y, big_direction, big_width, true);
 
-        fibinacci_branch(start_x + 10 * div_length * direction_x, start_y + 10 * div_length * direction_y, big_direction_x, big_direction_y, big_width, true);
-
-
-        float small_direction_x = direction_x - divide_mode * 0.5;
-        float small_direction_y = direction_y;
-        length = sqrt(small_direction_x * small_direction_x + small_direction_y * small_direction_y);
-        small_direction_x /= length;
-        small_direction_x /= length;
-
-        fibinacci_branch(start_x + 10 * div_length * direction_x, start_y + 10 * div_length * direction_y, small_direction_x, small_direction_y, small_width, true);
+        float small_direction = direction - divide_mode * 17;
+        fibinacci_branch(start_x + 10 * div_length * direction_x, start_y + 10 * div_length * direction_y, small_direction, small_width, true);
     }
 
 
@@ -49,5 +47,5 @@ void setup() {
     size(700, 700);
     background(239);
 
-    fibinacci_branch(350, 600, 0, -1, 70, true);
+    fibinacci_branch(350, 600, 0, 70, true);
 }
